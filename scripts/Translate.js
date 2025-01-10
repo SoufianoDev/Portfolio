@@ -80,7 +80,7 @@ inputPlaceholder: "John Smith",
   async loadTranslations(langs) {
     for (const lang of langs) {
       try {
-        const filePath = `./languages/${lang}.json`;
+        const filePath = `./resources/languages/${lang}.json`;
         await this.loadTranslationsFromFile(lang, filePath);
       } catch (err) {
         console.error(`Error loading ${lang} translations:`, err);
