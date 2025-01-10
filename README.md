@@ -55,7 +55,6 @@ The portfolio supports **four languages**:
 - Selecting a language dynamically translates the content of the portfolio using JavaScript.
 - The selected language is stored in the browser's local storage for persistence across sessions.
 
-
 ## Technologies Used
 
 - HTML5
@@ -72,30 +71,3 @@ The portfolio supports **four languages**:
 - GSAP 3.12.2
 - Font Awesome 6.0.0-beta3
 - Google Fonts (Sansita)
-
-
-## License
-
-This project is licensed under the Apache-2.0 License - see the [LICENSE](LICENSE) file for details.
-
-## Copyright
-
-© 2025 **Soufiano Dev**. All rights reserved.
-
-- The content, design, and code of this portfolio are the intellectual property of Soufiano Dev.
-- Unauthorized use, reproduction, or distribution of this project, in whole or in part, is strictly prohibited without prior written permission.
-- For inquiries regarding usage or collaboration, please contact me via the provided contact form or social media links.
-
-## Note
-
-This portfolio is intended for personal use and demonstration purposes only. It is not designed to be installable or reusable by others.
-
-## Contact
-
-- GitHub: [@SoufianoDev](https://github.com/SoufianoDev)
-- Instagram: [@soufiane_hanane1](https://www.instagram.com/soufiane_hanane1/)
-
----
-
-© 2025 Soufiano Dev. All rights reserved.
-
