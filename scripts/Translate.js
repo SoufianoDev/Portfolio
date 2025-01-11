@@ -54,7 +54,7 @@ inputPlaceholder: "John Smith",
       es: {
         languageNotAvailable:
           "Las traductions pour {lang} ne sont pas disponibles.",
-        alreadySelected: "{lang} est déjà sélectionné.",
+        alreadySelected: "{lang} ya está seleccionado.",
         switchedTo: "Idioma cambiado a {lang}.",
       },
       ar: {
