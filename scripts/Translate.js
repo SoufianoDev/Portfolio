@@ -1,8 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const footerYear = document.querySelector(".text-gray-400");
-  const currentYear = new Date().getFullYear();
-  footerYear.innerHTML = footerYear.innerHTML.replace(/\d{4}/, currentYear);
-});
+
 
 class Translator {
   constructor() {
@@ -193,9 +189,18 @@ class Translator {
   }
 }
 
+function updateFooterDate () {
+  document.addEventListener("DOMContentLoaded", () => {
+    const footerYear = document.querySelector(".text-gray-400");
+    const currentYear = new Date().getFullYear();
+    footerYear.innerHTML = footerYear.innerHTML.replace(/\d{4}/, currentYear);
+  });
+}
+
 const translator = new Translator();
 translator.loadTranslations(["en", "fr", "es", "ar", "fa"]).then(() => {
   translator.bindLanguageSwitch();
   const preSelectedLang = window.location.hash.slice(1) || "en";
   translator.switchLanguage(preSelectedLang);
+  
 });
