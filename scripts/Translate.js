@@ -139,7 +139,7 @@ class Translator {
     }
 
     // Update input placeholder and direction
-    const input = document.querySelector("input ");
+    const input = document.querySelector("input");
     if (input) {
       input.placeholder = this.translations[lang].inputPlaceholder || "";
       if (lang === "ar" || lang === "fa") {
