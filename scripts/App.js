@@ -22,6 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
   footerYear.innerHTML = footerYear.innerHTML.replace(/\d{4}/, currentYear);
 });
 
+
+
 // Display "Scroll for More" after 3 seconds
 setTimeout(() => {
   const scrollText = document.querySelector(".scroll-text-container");
@@ -60,3 +62,55 @@ var intervalId = window.setInterval(function () {
 }, 3000);
 // clearInterval(intervalId);
 console.log(imgs);
+
+// Function to toggle the dropdown visibility
+function toggleDropdown(event) {
+  event.stopPropagation(); // Prevent event from bubbling up to document
+  const dropdown = document.querySelector(".language-selector .dropdown");
+  dropdown.classList.toggle("show");
+
+  // Adjust scrollbar properties dynamically if needed
+  const languageLinks = dropdown.querySelectorAll("a");
+  if (languageLinks.length > 5) {
+    dropdown.style.maxHeight = "200px"; // Set max height for scrollbar
+    dropdown.style.overflowY = "auto"; // Enable vertical scrolling
+  } else {
+    dropdown.style.maxHeight = "none"; // Reset if less than 5 languages
+    dropdown.style.overflowY = "hidden";
+  }
+}
+
+// Add click event listener to the language icon button
+const languageIconButton = document.querySelector(".language-icon button");
+languageIconButton.addEventListener("click", toggleDropdown);
+
+// Close the dropdown if the user clicks outside of it
+document.addEventListener("click", function (event) {
+  const dropdown = document.querySelector(".language-selector .dropdown");
+  const languageIcon = document.querySelector(".language-icon");
+
+  // Check if the click is outside the dropdown and language icon
+  if (
+    !dropdown.contains(event.target) &&
+    !languageIcon.contains(event.target)
+  ) {
+    dropdown.classList.remove("show"); // Close the dropdown
+  }
+});
+
+// Close dropdown when a language is selected
+const languageLinks = document.querySelectorAll(
+  ".language-selector .dropdown a"
+);
+languageLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent default link behavior
+    const dropdown = document.querySelector(".language-selector .dropdown");
+    dropdown.classList.remove("show"); // Close the dropdown
+
+    // Optional: Handle language selection
+    const selectedLanguage = link.getAttribute("data-lang");
+    console.log("Selected Language:", selectedLanguage);
+  });
+});
+

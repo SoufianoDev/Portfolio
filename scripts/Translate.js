@@ -10,8 +10,7 @@ class Translator {
       en: {
         footerText: "© {year} Soufiano Dev. All rights reserved.",
         messagePlaceholder: "Hello, I would like to discuss...",
-inputPlaceholder: "John Smith",
-        
+        inputPlaceholder: "John Smith",
       },
       fr: {
         footerText: "© {year} Soufiano Dev. Tous droits réservés.",
@@ -28,6 +27,12 @@ inputPlaceholder: "John Smith",
         messagePlaceholder: "مرحبًا، أود مناقشة...",
         inputPlaceholder: "جون سميث",
       },
+
+      fa: {
+        footerText: "© {year} Soufiano Dev. تمامی حقوق محفوظ است.",
+        messagePlaceholder: "سلام، می‌خواهم درباره ... صحبت کنم.",
+        inputPlaceholder: "جان اسمیت",
+      },
     };
     this.toast = document.getElementById("toast");
     this.showToastOnSwitch = false;
@@ -36,6 +41,7 @@ inputPlaceholder: "John Smith",
       fr: "Français",
       es: "Español",
       ar: "العربية",
+      fa: "فارسى",
     };
     this.initialLoad = true;
 
@@ -61,6 +67,12 @@ inputPlaceholder: "John Smith",
         languageNotAvailable: "الترجمات للغة {lang} غير متوفرة.",
         alreadySelected: "اللغة {lang} مُختارة بالفعل.",
         switchedTo: "تم تغيير اللغة إلى {lang}.",
+      },
+
+      fa: {
+        languageNotAvailable: "ترجمه‌ها برای زبان {lang} موجود نیست.",
+        alreadySelected: "زبان {lang} از قبل انتخاب شده است.",
+        switchedTo: "زبان به {lang} تغییر یافت.",
       },
     };
   }
@@ -119,19 +131,19 @@ inputPlaceholder: "John Smith",
     const textarea = document.querySelector("textarea");
     if (textarea) {
       textarea.placeholder = this.translations[lang].messagePlaceholder || "";
-      if (lang === "ar") {
-        textarea.style.direction = "rtl"; // Set direction to rtl for Arabic
+      if (lang === "ar" || lang === "fa") {
+        textarea.style.direction = "rtl"; // Set direction to rtl for Arabic and Farsi
       } else {
         textarea.style.direction = "ltr"; // Reset direction for other languages
       }
     }
 
     // Update input placeholder and direction
-    const input = document.querySelector("input");
+    const input = document.querySelector("input ");
     if (input) {
       input.placeholder = this.translations[lang].inputPlaceholder || "";
-      if (lang === "ar") {
-        input.style.direction = "rtl"; // Set direction to rtl for Arabic
+      if (lang === "ar" || lang === "fa") {
+        input.style.direction = "rtl"; // Set direction to rtl for Arabic and Farsi
       } else {
         input.style.direction = "ltr"; // Reset direction for other languages
       }
@@ -182,7 +194,7 @@ inputPlaceholder: "John Smith",
 }
 
 const translator = new Translator();
-translator.loadTranslations(["en", "fr", "es", "ar"]).then(() => {
+translator.loadTranslations(["en", "fr", "es", "ar", "fa"]).then(() => {
   translator.bindLanguageSwitch();
   const preSelectedLang = window.location.hash.slice(1) || "en";
   translator.switchLanguage(preSelectedLang);

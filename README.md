@@ -43,11 +43,12 @@ This portfolio website features:
 
 ## Supported Languages
 
-The portfolio supports **four languages**:
+The portfolio supports **Five Languages**:
 1. **English** (Default)
 2. **Français** (French)
 3. **Español** (Spanish)
 4. **العربية** (Arabic)
+5. **فارسى**   (Persian)
 
 ### How It Works
 - The language selector is located in the top-left corner of the hero section.
