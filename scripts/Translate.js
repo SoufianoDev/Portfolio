@@ -7,27 +7,52 @@ class Translator {
         footerText: "© {year} Soufiano Dev. All rights reserved.",
         messagePlaceholder: "Hello, I would like to discuss...",
         inputPlaceholder: "John Smith",
+        submitButton: "Send Message",
+        sendingButton: "Sending...",
+        thankYouMessage: "Thank you for reaching out! I'll get back to you soon.",
+        errorMessage: "Oops! Something went wrong. Please try again later.",
+        fillAllFieldsMessage: "Please fill out all fields before submitting.",
       },
       fr: {
         footerText: "© {year} Soufiano Dev. Tous droits réservés.",
         messagePlaceholder: "Bonjour, je voudrais discuter de...",
         inputPlaceholder: "John Smith",
+        submitButton: "Envoyer un Message",
+        sendingButton: "Envoi en cours...",
+        thankYouMessage: "Merci de votre message ! Je vous répondrai bientôt.",
+        errorMessage: "Oups ! Quelque chose s'est mal passé. Veuillez réessayer plus tard.",
+        fillAllFieldsMessage: "Veuillez remplir tous les champs avant de soumettre.",
       },
       es: {
         footerText: "© {year} Soufiano Dev. Todos los derechos reservados.",
         messagePlaceholder: "Hola, me gustaría hablar de...",
         inputPlaceholder: "John Smith",
+        submitButton: "Enviar Mensaje",
+        sendingButton: "Enviando...",
+        thankYouMessage: "¡Gracias por contactarme! Me pondré en contacto contigo pronto.",
+        errorMessage: "¡Ups! Algo salió mal. Por favor, inténtalo de nuevo más tarde.",
+        fillAllFieldsMessage: "Por favor, complete todos los campos antes de enviar.",
       },
       ar: {
         footerText: "© {year} Soufiano Dev. جميع الحقوق محفوظة.",
         messagePlaceholder: "مرحبًا، أود مناقشة...",
         inputPlaceholder: "جون سميث",
+        submitButton: "إرسال",
+        sendingButton: "جارٍ الإرسال...",
+        thankYouMessage: "شكرًا على تواصلك! سأرد عليك قريبًا.",
+        errorMessage: "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا.",
+        fillAllFieldsMessage: "يرجى ملء جميع الحقول قبل الإرسال.",
       },
 
       fa: {
         footerText: "© {year} Soufiano Dev. تمامی حقوق محفوظ است.",
         messagePlaceholder: "سلام، می‌خواهم درباره ... صحبت کنم.",
         inputPlaceholder: "جان اسمیت",
+        submitButton: "ارسال",
+        sendingButton: "در حال ارسال...",
+        thankYouMessage: "با تشکر از تماس شما! به زودی با شما تماس خواهم گرفت.",
+        errorMessage: "اوه! مشکلی پیش آمد. لطفاً بعداً دوباره امتحان کنید.",
+        fillAllFieldsMessage: "لطفاً قبل از ارسال، تمام فیلدها را پر کنید.",
       },
     };
     this.toast = document.getElementById("toast");
@@ -126,6 +151,17 @@ class Translator {
     // Update textarea placeholder and direction
     const textarea = document.querySelector("textarea");
     if (textarea) {
+      textarea.placeholder = this.translations[lang].messagePlaceholder || "";
+      if (lang === "ar" || lang === "fa") {
+        textarea.style.direction = "rtl"; // Set direction to rtl for Arabic and Farsi
+      } else {
+        textarea.style.direction = "ltr"; // Reset direction for other languages
+      }
+    }
+
+
+    const button = document.querySelector("button");
+    if (button) {
       textarea.placeholder = this.translations[lang].messagePlaceholder || "";
       if (lang === "ar" || lang === "fa") {
         textarea.style.direction = "rtl"; // Set direction to rtl for Arabic and Farsi
