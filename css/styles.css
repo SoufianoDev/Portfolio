@@ -115,8 +115,11 @@
 
 @media (max-width: 576px) {
   .about-text {
-    margin-left: 8%;
-    margin-right: 8vw;
+    /* margin-left: 8vw;
+    margin-right: 8vw; */
+    padding-left: 8vw;
+    padding-right: 8vw;
+
     text-align: center;
   }
 }
