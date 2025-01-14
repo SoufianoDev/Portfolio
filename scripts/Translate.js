@@ -1,5 +1,3 @@
-
-
 class Translator {
   constructor() {
     this.translations = {
@@ -7,9 +5,10 @@ class Translator {
         footerText: "© {year} Soufiano Dev. All rights reserved.",
         messagePlaceholder: "Hello, I would like to discuss...",
         inputPlaceholder: "John Smith",
-        submitButton: "Send Message",
+        submitButton: "Submit",
         sendingButton: "Sending...",
-        thankYouMessage: "Thank you for reaching out! I'll get back to you soon.",
+        thankYouMessage:
+          "Thank you for reaching out! I'll get back to you soon.",
         errorMessage: "Oops! Something went wrong. Please try again later.",
         fillAllFieldsMessage: "Please fill out all fields before submitting.",
       },
@@ -20,8 +19,10 @@ class Translator {
         submitButton: "Envoyer un Message",
         sendingButton: "Envoi en cours...",
         thankYouMessage: "Merci de votre message ! Je vous répondrai bientôt.",
-        errorMessage: "Oups ! Quelque chose s'est mal passé. Veuillez réessayer plus tard.",
-        fillAllFieldsMessage: "Veuillez remplir tous les champs avant de soumettre.",
+        errorMessage:
+          "Oups ! Quelque chose s'est mal passé. Veuillez réessayer plus tard.",
+        fillAllFieldsMessage:
+          "Veuillez remplir tous les champs avant de soumettre.",
       },
       es: {
         footerText: "© {year} Soufiano Dev. Todos los derechos reservados.",
@@ -29,9 +30,12 @@ class Translator {
         inputPlaceholder: "John Smith",
         submitButton: "Enviar Mensaje",
         sendingButton: "Enviando...",
-        thankYouMessage: "¡Gracias por contactarme! Me pondré en contacto contigo pronto.",
-        errorMessage: "¡Ups! Algo salió mal. Por favor, inténtalo de nuevo más tarde.",
-        fillAllFieldsMessage: "Por favor, complete todos los campos antes de enviar.",
+        thankYouMessage:
+          "¡Gracias por contactarme! Me pondré en contacto contigo pronto.",
+        errorMessage:
+          "¡Ups! Algo salió mal. Por favor, inténtalo de nuevo más tarde.",
+        fillAllFieldsMessage:
+          "Por favor, complete todos los campos antes de enviar.",
       },
       ar: {
         footerText: "© {year} Soufiano Dev. جميع الحقوق محفوظة.",
@@ -159,7 +163,6 @@ class Translator {
       }
     }
 
-
     const button = document.querySelector("button");
     if (button) {
       textarea.placeholder = this.translations[lang].messagePlaceholder || "";
@@ -225,7 +228,7 @@ class Translator {
   }
 }
 
-function updateFooterDate () {
+function updateFooterDate() {
   document.addEventListener("DOMContentLoaded", () => {
     const footerYear = document.querySelector(".text-gray-400");
     const currentYear = new Date().getFullYear();
@@ -238,5 +241,4 @@ translator.loadTranslations(["en", "fr", "es", "ar", "fa"]).then(() => {
   translator.bindLanguageSwitch();
   const preSelectedLang = window.location.hash.slice(1) || "en";
   translator.switchLanguage(preSelectedLang);
-  
 });
