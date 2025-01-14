@@ -4,8 +4,8 @@
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  /* margin-left: 10px;
-  margin-right: 10px; */
+  margin-left: 2vw;
+  margin-right: 2vw;
 }
 
 @keyframes neon {
@@ -107,7 +107,8 @@
 }
 
 .about-text {
-  padding: 17px;
+  margin-left: 3vw;
+  margin-right: 3vw;
   justify-content: center;
   text-align: center;
 }
