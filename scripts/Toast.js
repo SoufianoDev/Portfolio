@@ -9,9 +9,6 @@
  * - Duration control
  */
 
-
-
-
 // // Using predefined sizes
 // toast.setIcon('path/to/icon.png', 'SMALL');
 // toast.setIcon('path/to/icon.png', 'MEDIUM');
@@ -23,8 +20,6 @@
 
 // // Using default size
 // toast.setIcon('path/to/icon.png');
-
-
 
 class Toast {
   // Toast duration constants
@@ -39,6 +34,10 @@ class Toast {
   static POSITION_BOTTOM_CENTER = "bottom-center";
   static POSITION_BOTTOM_RIGHT = "bottom-right";
 
+  // Icon position constants
+  static ICON_POSITION_START = "start";
+  static ICON_POSITION_END = "end";
+
   // Predefined animation constants
   static FADE = "fade";
   static SLIDE_TOP = "slide-top";
@@ -48,21 +47,21 @@ class Toast {
 
   // Icon size constants
   static ICON_SIZE = {
-    SMALL: { width: '20px', height: '20px' },
-    MEDIUM: { width: '24px', height: '24px' },
-    LARGE: { width: '32px', height: '32px' },
-    EXTRA_LARGE: { width: '48px', height: '48px' }
+    SMALL: { width: "20px", height: "20px" },
+    MEDIUM: { width: "24px", height: "24px" },
+    LARGE: { width: "32px", height: "32px" },
+    EXTRA_LARGE: { width: "48px", height: "48px" },
   };
 
   // Predefined style constants
-  static STYLE_DEFAULT = {
+  static STYLE_DEFAULT_1 = {
     backgroundColor: "#323232",
     color: "#fff",
     padding: "10px 20px",
     borderRadius: "5px",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
     fontSize: "14px",
-    fontFamily: "system-ui, -apple-system, sans-serif"
+    fontFamily: "system-ui, -apple-system, sans-serif",
   };
 
   static STYLE_DEFAULT_2 = {
@@ -72,7 +71,7 @@ class Toast {
     borderRadius: "5px",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
     fontSize: "14px",
-    fontFamily: "system-ui, -apple-system, sans-serif"
+    fontFamily: "system-ui, -apple-system, sans-serif",
   };
 
   static STYLE_SUCCESS = {
@@ -82,7 +81,7 @@ class Toast {
     borderRadius: "5px",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
     fontSize: "14px",
-    fontFamily: "system-ui, -apple-system, sans-serif"
+    fontFamily: "system-ui, -apple-system, sans-serif",
   };
 
   static STYLE_ERROR = {
@@ -92,7 +91,7 @@ class Toast {
     borderRadius: "5px",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
     fontSize: "14px",
-    fontFamily: "system-ui, -apple-system, sans-serif"
+    fontFamily: "system-ui, -apple-system, sans-serif",
   };
 
   static STYLE_WARNING = {
@@ -102,7 +101,7 @@ class Toast {
     borderRadius: "5px",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
     fontSize: "14px",
-    fontFamily: "system-ui, -apple-system, sans-serif"
+    fontFamily: "system-ui, -apple-system, sans-serif",
   };
 
   static STYLE_INFO = {
@@ -112,7 +111,7 @@ class Toast {
     borderRadius: "5px",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
     fontSize: "14px",
-    fontFamily: "system-ui, -apple-system, sans-serif"
+    fontFamily: "system-ui, -apple-system, sans-serif",
   };
 
   constructor(context) {
@@ -120,10 +119,11 @@ class Toast {
     this.toastElement = null;
     this.duration = Toast.LENGTH_SHORT;
     this.callbacks = [];
-    this.customStyle = Toast.STYLE_DEFAULT;
+    this.customStyle = Toast.STYLE_DEFAULT_1;
     this.position = Toast.POSITION_BOTTOM_CENTER;
     this.icon = null;
     this.iconSize = Toast.ICON_SIZE.MEDIUM;
+    this.iconPosition = Toast.ICON_POSITION_START; // Default icon position
     this.textDirection = "auto";
     this.animationClass = Toast.FADE;
     this.dismissible = false;
@@ -145,7 +145,8 @@ class Toast {
 
   // Method to set toast duration
   setDuration(duration) {
-    this.duration = duration === Toast.LENGTH_LONG ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT;
+    this.duration =
+      duration === Toast.LENGTH_LONG ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT;
     return this;
   }
 
@@ -153,10 +154,9 @@ class Toast {
   setStyle(style) {
     if (typeof style === "string") {
       switch (style.toLowerCase()) {
-        case "default":
-          this.customStyle = Toast.STYLE_DEFAULT;
-          break;
-        case "default2":
+        case "default_1":
+          this.customStyle = Toast.STYLE_DEFAULT_1;
+        case "default_2":
           this.customStyle = Toast.STYLE_DEFAULT_2;
           break;
         case "success":
@@ -173,10 +173,10 @@ class Toast {
           break;
         default:
           console.warn("Invalid style name. Using default style.");
-          this.customStyle = Toast.STYLE_DEFAULT;
+          this.customStyle = Toast.STYLE_DEFAULT_1;
       }
     } else if (typeof style === "object") {
-      this.customStyle = { ...Toast.STYLE_DEFAULT, ...style };
+      this.customStyle = { ...Toast.STYLE_DEFAULT_1, ...style };
     }
     return this;
   }
@@ -191,7 +191,9 @@ class Toast {
       Toast.POSITION_BOTTOM_CENTER,
       Toast.POSITION_BOTTOM_RIGHT,
     ];
-    this.position = validPositions.includes(position) ? position : Toast.POSITION_BOTTOM_CENTER;
+    this.position = validPositions.includes(position)
+      ? position
+      : Toast.POSITION_BOTTOM_CENTER;
     return this;
   }
 
@@ -202,17 +204,18 @@ class Toast {
   }
 
   // Method to set toast icon
-  setIcon(iconPath, size = null) {
+  setIcon(iconPath, size = null, position = Toast.ICON_POSITION_START) {
     this.icon = iconPath;
     if (size) {
-      if (typeof size === 'object' && size.width && size.height) {
+      if (typeof size === "object" && size.width && size.height) {
         this.iconSize = size;
       } else if (Toast.ICON_SIZE[size]) {
         this.iconSize = Toast.ICON_SIZE[size];
       } else {
-        console.warn('Invalid icon size. Using default size.');
+        console.warn("Invalid icon size. Using default size.");
       }
     }
+    this.iconPosition = position;
     return this;
   }
 
@@ -224,7 +227,7 @@ class Toast {
 
   // Method to add callback
   addCallback(callback) {
-    if (typeof callback === 'function') {
+    if (typeof callback === "function") {
       this.callbacks.push(callback);
     }
     return this;
@@ -234,23 +237,25 @@ class Toast {
   createIconElement() {
     if (!this.icon) return null;
 
-    const iconContainer = document.createElement('div');
+    const iconContainer = document.createElement("div");
     Object.assign(iconContainer.style, {
-      marginRight: '12px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexShrink: '0',
-      ...this.iconSize
+      marginRight:
+        this.iconPosition === Toast.ICON_POSITION_START ? "12px" : "0",
+      marginLeft: this.iconPosition === Toast.ICON_POSITION_END ? "12px" : "0",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexShrink: "0",
+      ...this.iconSize,
     });
 
-    if (this.icon.endsWith('.webm') || this.icon.endsWith('.mp4')) {
+    if (this.icon.endsWith(".webm") || this.icon.endsWith(".mp4")) {
       // Handle animated icons (video)
-      const video = document.createElement('video');
+      const video = document.createElement("video");
       Object.assign(video.style, {
-        width: '100%',
-        height: '100%',
-        objectFit: 'contain'
+        width: "100%",
+        height: "100%",
+        objectFit: "contain",
       });
       video.src = this.icon;
       video.autoplay = true;
@@ -260,11 +265,11 @@ class Toast {
       iconContainer.appendChild(video);
     } else {
       // Handle static icons (images)
-      const img = document.createElement('img');
+      const img = document.createElement("img");
       Object.assign(img.style, {
-        width: '100%',
-        height: '100%',
-        objectFit: 'contain'
+        width: "100%",
+        height: "100%",
+        objectFit: "contain",
       });
       img.src = this.icon;
       img.alt = "Toast icon";
@@ -276,21 +281,21 @@ class Toast {
 
   // Method to create close button
   createCloseButton() {
-    const closeButton = document.createElement('button');
+    const closeButton = document.createElement("button");
     Object.assign(closeButton.style, {
-      background: 'none',
-      border: 'none',
-      color: 'inherit',
-      cursor: 'pointer',
-      padding: '0 0 0 12px',
-      fontSize: '18px',
-      opacity: '0.8',
-      transition: 'opacity 0.2s ease'
+      background: "none",
+      border: "none",
+      color: "inherit",
+      cursor: "pointer",
+      padding: "0 0 0 12px",
+      fontSize: "18px",
+      opacity: "0.8",
+      transition: "opacity 0.2s ease",
     });
-    closeButton.innerHTML = '×';
+    closeButton.innerHTML = "×";
     closeButton.onclick = () => this.hide();
-    closeButton.onmouseover = () => closeButton.style.opacity = '1';
-    closeButton.onmouseout = () => closeButton.style.opacity = '0.8';
+    closeButton.onmouseover = () => (closeButton.style.opacity = "1");
+    closeButton.onmouseout = () => (closeButton.style.opacity = "0.8");
     return closeButton;
   }
 
@@ -301,15 +306,22 @@ class Toast {
       [Toast.POSITION_TOP_CENTER]: {
         top: "20px",
         left: "50%",
-        transform: "translateX(-50%)"
+        transform: "translateX(-50%)",
       },
       [Toast.POSITION_TOP_RIGHT]: { top: "20px", right: "20px" },
       [Toast.POSITION_BOTTOM_LEFT]: { bottom: "20px", left: "20px" },
-      [Toast.POSITION_BOTTOM_CENTER]: {  bottom: "20px", left: "50%",transform: "translateX(-50%)" },
-      [Toast.POSITION_BOTTOM_RIGHT]: { bottom: "20px", right: "20px" }
+      [Toast.POSITION_BOTTOM_CENTER]: {
+        bottom: "20px",
+        left: "50%",
+        transform: "translateX(-50%)",
+      },
+      [Toast.POSITION_BOTTOM_RIGHT]: { bottom: "20px", right: "20px" },
     };
 
-    Object.assign(element.style, positions[this.position] || positions[Toast.POSITION_BOTTOM_CENTER]);
+    Object.assign(
+      element.style,
+      positions[this.position] || positions[Toast.POSITION_BOTTOM_CENTER]
+    );
   }
 
   // Method to show toast
@@ -321,19 +333,26 @@ class Toast {
     this.toastElement.className = `toast-notification ${this.animationClass}`;
 
     // Create container for icon and text
-    const contentContainer = document.createElement('div');
+    const contentContainer = document.createElement("div");
     Object.assign(contentContainer.style, {
-      display: 'flex',
-      alignItems: 'center',
-      minHeight: '48px',
-      padding: '8px 12px'
+      display: "flex",
+      alignItems: "center",
+      minHeight: "48px",
+      padding: "8px 12px",
     });
 
     // Add icon if specified
     if (this.icon) {
       const iconElement = this.createIconElement();
       if (iconElement) {
-        contentContainer.appendChild(iconElement);
+        if (this.iconPosition === Toast.ICON_POSITION_START) {
+          contentContainer.appendChild(iconElement);
+        } else {
+          contentContainer.insertBefore(
+            iconElement,
+            contentContainer.firstChild
+          );
+        }
       }
     }
 
@@ -341,9 +360,18 @@ class Toast {
     const textElement = document.createElement("span");
     textElement.innerText = this.text;
     Object.assign(textElement.style, {
-      flex: '1',
-      marginLeft: this.icon ? '0' : '12px',
-      marginRight: '12px'
+      flex: "1",
+      marginLeft:
+        this.icon && this.iconPosition === Toast.ICON_POSITION_START
+          ? "0"
+          : "12px",
+      marginRight:
+        this.icon && this.iconPosition === Toast.ICON_POSITION_END
+          ? "0"
+          : "12px",
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
     });
     contentContainer.appendChild(textElement);
 
@@ -364,15 +392,15 @@ class Toast {
       justifyContent: "center",
       transition: "all 0.3s ease-in-out",
       opacity: 0,
-      minWidth: '200px',
-      maxWidth: '80vw'
+      minWidth: "200px",
+      maxWidth: "80vw",
     });
 
     Object.assign(this.toastElement.style, this.customStyle);
     this.applyPositionStyle(this.toastElement);
 
     // Add CSS animations
-    const style = document.createElement('style');
+    const style = document.createElement("style");
     style.textContent = `
       .fade {
         opacity: 0;
@@ -402,7 +430,7 @@ class Toast {
 
     requestAnimationFrame(() => {
       this.toastElement.style.opacity = 1;
-      if (this.position.includes('center')) {
+      if (this.position.includes("center")) {
         this.toastElement.style.transform = "translateX(-50%) scale(1)";
       } else {
         this.toastElement.style.transform = "scale(1)";
@@ -410,7 +438,7 @@ class Toast {
     });
 
     // Execute callbacks
-    this.callbacks.forEach(callback => callback());
+    this.callbacks.forEach((callback) => callback());
 
     // Auto-hide if not dismissible
     if (!this.dismissible) {
@@ -425,7 +453,7 @@ class Toast {
     if (!this.toastElement) return;
 
     this.toastElement.style.opacity = 0;
-    if (this.position.includes('center')) {
+    if (this.position.includes("center")) {
       this.toastElement.style.transform = "translateX(-50%) scale(0.8)";
     } else {
       this.toastElement.style.transform = "scale(0.8)";
@@ -439,3 +467,5 @@ class Toast {
     }, 300);
   }
 }
+
+window.Toast = Toast;

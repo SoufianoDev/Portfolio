@@ -128,7 +128,7 @@ class Translator {
       const message = this.getToastMessage(lang, "languageNotAvailable");
       Toast.makeText(document.body, message, Toast.LENGTH_SHORT)
         .setPosition(Toast.POSITION_TOP_CENTER)
-        .setStyle("default2")
+        .setStyle("default_2")
         .setIcon("./resources/assets/checkmark.webm", "EXTRA_LARGE")
         .addCallback(() => console.log("Toast shown!"))
         .show();
@@ -140,7 +140,7 @@ class Translator {
         const message = this.getToastMessage(lang, "alreadySelected");
         Toast.makeText(document.body, message, Toast.LENGTH_SHORT)
           .setPosition(Toast.POSITION_TOP_CENTER)
-          .setStyle("default2")
+          .setStyle("default_2")
           .setIcon("./resources/assets/ic_error1_150x150.webm", "EXTRA_LARGE")
           .addCallback(() => console.log("Toast shown!"))
           .show();
@@ -162,39 +162,60 @@ class Translator {
       }
     });
 
-    // Update textarea placeholder and direction
-    const textarea = document.querySelector("textarea");
-    if (textarea) {
-      textarea.placeholder = this.translations[lang].messagePlaceholder || "";
-      if (lang === "ar" || lang === "fa") {
-        textarea.style.direction = "rtl"; // Set direction to rtl for Arabic and Farsi
-      } else {
-        textarea.style.direction = "ltr"; // Reset direction for other languages
-      }
-    }
+    // Array of element selectors to apply placeholders and direction dynamically
+    const elements = ["textarea", "button", "input"];
 
-    const button = document.querySelector("button");
-    if (button) {
-      textarea.placeholder = this.translations[lang].messagePlaceholder || "";
-      if (lang === "ar" || lang === "fa") {
-        textarea.style.direction = "rtl"; // Set direction to rtl for Arabic and Farsi
-      } else {
-        textarea.style.direction = "ltr"; // Reset direction for other languages
+    const setPlaceholderAndDirection = (el, placeholderKey) => {
+      if (el) {
+        el.placeholder = this.translations[lang][placeholderKey] || "";
+        el.style.direction = ["ar", "fa"].includes(lang) ? "rtl" : "ltr";
       }
-    }
+    };
 
-    // Update input placeholder and direction
-    const input = document.querySelector("input");
-    if (input) {
-      input.placeholder = this.translations[lang].inputPlaceholder || "";
-      if (lang === "ar" || lang === "fa") {
-        input.style.direction = "rtl"; // Set direction to rtl for Arabic and Farsi
-      } else {
-        input.style.direction = "ltr"; // Reset direction for other languages
-      }
-    }
 
-    // Update footer text (unchanged)
+
+    // // Update textarea placeholder and direction
+    // const textarea = document.querySelector("textarea");
+    // if (textarea) {
+    //   textarea.placeholder = this.translations[lang].messagePlaceholder || "";
+    //   if (lang === "ar" || lang === "fa") {
+    //     textarea.style.direction = "rtl"; // Set direction to rtl for Arabic and Farsi
+    //   } else {
+    //     textarea.style.direction = "ltr"; // Reset direction for other languages
+    //   }
+    // }
+
+    // const button = document.querySelector("button");
+    // if (button) {
+    //   textarea.placeholder = this.translations[lang].messagePlaceholder || "";
+    //   if (lang === "ar" || lang === "fa") {
+    //     textarea.style.direction = "rtl"; // Set direction to rtl for Arabic and Farsi
+    //   } else {
+    //     textarea.style.direction = "ltr"; // Reset direction for other languages
+    //   }
+    // }
+
+    // // Update input placeholder and direction
+    // const input = document.querySelector("input");
+    // if (input) {
+    //   input.placeholder = this.translations[lang].inputPlaceholder || "";
+    //   if (lang === "ar" || lang === "fa") {
+    //     input.style.direction = "rtl"; // Set direction to rtl for Arabic and Farsi
+    //   } else {
+    //     input.style.direction = "ltr"; // Reset direction for other languages
+    //   }
+    
+
+
+
+    elements.forEach((selector) =>
+      setPlaceholderAndDirection(
+        document.querySelector(selector),
+        selector === "input" ? "inputPlaceholder" : "messagePlaceholder"
+      )
+    );
+
+    // Update footer text
     const footerTextElement = document.querySelector(
       "[data-translate='footerText']"
     );
@@ -210,7 +231,7 @@ class Translator {
       const message = this.getToastMessage(lang, "switchedTo");
       Toast.makeText(document.body, message, Toast.LENGTH_SHORT)
         .setPosition(Toast.POSITION_TOP_CENTER)
-        .setStyle("default2")
+        .setStyle("default_2")
         .setIcon("./resources/assets/checkmark.webm", "EXTRA_LARGE")
         .addCallback(() => console.log("Toast shown!"))
         .show();
