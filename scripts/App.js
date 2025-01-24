@@ -15,14 +15,13 @@ gsap.to("#heroSubtitle", {
   delay: 1,
 });
 
-// Update copyright
 document.addEventListener("DOMContentLoaded", () => {
   const footerYear = document.querySelector(".text-gray-400");
   const currentYear = new Date().getFullYear();
   footerYear.innerHTML = footerYear.innerHTML.replace(/\d{4}/, currentYear);
 });
 
-// Display "Scroll for More" after 3 seconds
+// Display "Scroll for More" after seconds
 setTimeout(() => {
   const scrollText = document.querySelector(".scroll-text-container");
   scrollText.style.visibility = "visible";
