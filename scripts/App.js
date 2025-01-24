@@ -75,7 +75,7 @@ document.addEventListener("click", function (event) {
   ) {
     dropdown.classList.remove("show");
   }
-});
+}); 
 
 const languageLinks = document.querySelectorAll(
   ".language-selector .dropdown a"
