@@ -61,6 +61,7 @@ The portfolio supports **Five Languages**:
 - HTML5
 - CSS3/TailwindCSS
 - JavaScript
+- Toast-JS (By Soufiano Dev)
 - GSAP (GreenSock Animation Platform)
 - Font Awesome
 - Google Fonts
