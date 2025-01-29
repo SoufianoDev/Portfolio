@@ -71,5 +71,6 @@ The portfolio supports **Five Languages**:
 ```html
 - TailwindCSS (CDN)
 - GSAP 3.12.2
+- Toast-JS 1.0.0 (CDN From My Github)
 - Font Awesome 6.0.0-beta3
 - Google Fonts (Sansita)
