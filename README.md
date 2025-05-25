@@ -1,6 +1,6 @@
 # Modern Portfolio - Soufiano Dev
 
-A modern, responsive portfolio website showcasing my work as a Java & Kotlin Developer. Built with HTML, TailwindCSS, and JavScript.
+A modern, responsive portfolio website showcasing my work as a Java & Kotlin Developer. Built with HTML, TailwindCSS, and JavaScript.
 
 ## Overview
 
