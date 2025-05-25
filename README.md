@@ -1,10 +1,11 @@
 # Modern Portfolio - Soufiano Dev
 
-A modern, responsive portfolio website showcasing my work as a Java & Kotlin Developer. Built with HTML, TailwindCSS, and JavScript.
+A modern, responsive portfolio website showcasing my work as a Java & Kotlin Developer. Built with HTML, TailwindCSS, and JavaScript.
 
 ## Overview
 
 This portfolio website features:
+
 - Animated hero section with floating tech icons
 - About me section
 - Projects showcase
@@ -18,6 +19,7 @@ This portfolio website features:
 ## Features
 
 ### Visual Design
+
 - Modern glassmorphism effects
 - Responsive design for all screen sizes
 - Animated background with tech stack icons
@@ -25,6 +27,7 @@ This portfolio website features:
 - Custom scrollbar styling
 
 ### Functionality
+
 - Multi-language support (English, French, Spanish, Arabic)
 - Contact form with validation
 - Smooth scroll behavior
@@ -33,6 +36,7 @@ This portfolio website features:
 - Social media integration
 
 ### Technical Features
+
 - CSS animations and transitions
 - GSAP animations
 - TailwindCSS utility classes
@@ -44,14 +48,16 @@ This portfolio website features:
 ## Supported Languages
 
 The portfolio supports **Six Languages**:
+
 1. **English** (Default)
 2. **Français** (French)
 3. **Español** (Spanish)
 4. **Русский** (Russian)
 5. **العربية** (Arabic)
-6. **فارسى**   (Persian)
+6. **فارسى** (Persian)
 
 ### How It Works
+
 - The language selector is located in the top-left corner of the hero section.
 - Clicking the globe icon opens a dropdown menu with the available languages.
 - Selecting a language dynamically translates the content of the portfolio using JavaScript.
@@ -71,8 +77,6 @@ The portfolio supports **Six Languages**:
 ## External Dependencies
 
 ```html
-- TailwindCSS (CDN)
-- GSAP 3.12.2
-- Font Awesome 6.0.0-beta3
-- Google Fonts (Sansita)
-- Toast.js v2.0.0(CDN From My Github.For Notifications)
+- TailwindCSS (CDN) - GSAP 3.12.2 - Font Awesome 6.0.0-beta3 - Google Fonts
+(Sansita) - Toast.js v2.0.0(CDN From My Github.For Notifications)
+```
