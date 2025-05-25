@@ -77,3 +77,4 @@ The portfolio supports **Six Languages**:
 - Toast-JS 1.0.0 (CDN From My Github)
 - Font Awesome 6.0.0-beta3
 - Google Fonts (Sansita)
+- Toast.js v2.0.0(CDN From My Github.For Notifications)
