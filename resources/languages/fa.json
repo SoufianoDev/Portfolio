@@ -29,4 +29,15 @@
   "submitButton": "ارسال",
   "sendMessage": "ارسال پیام",
   "scrollForMore": "برای مشاهده بیشتر پیمایش کنید"
+,
+  "footerText": "© {year} Soufiano Dev. تمامی حقوق محفوظ است.",
+  "messagePlaceholder": "سلام، می‌خواهم درباره ... صحبت کنم.",
+  "inputPlaceholder": "جان اسمیت",
+  "sendingButton": "در حال ارسال...",
+  "thankYouMessage": "با تشکر از تماس شما! به زودی\n با شما تماس خواهم گرفت.",
+  "errorMessage": "اوه! مشکلی پیش آمد. لطفاً بعداً دوباره امتحان کنید.",
+  "fillAllFieldsMessage": "لطفاً قبل از ارسال، تمام فیلدها را پر کنید.",
+  "languageNotAvailable": "ترجمه‌ها برای زبان {lang} موجود نیست.",
+  "alreadySelected": "زبان {lang} از قبل انتخاب شده است.",
+  "switchedTo": "زبان به {lang} تغییر یافت."
 }

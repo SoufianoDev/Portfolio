@@ -26,7 +26,17 @@
   "yourName": "Your Name",
   "yourEmail": "Your Email",
   "yourMessage": "Your Message",
- "submitButton": "Submit",
+  "submitButton": "Submit",
   "sendMessage": "Send Message",
-  "scrollForMore": "Scroll for More"
+  "scrollForMore": "Scroll for More",
+  "footerText": "© {year} Soufiano Dev. All rights reserved.",
+  "messagePlaceholder": "Hello, I would like to discuss...",
+  "inputPlaceholder": "John Smith",
+  "sendingButton": "Sending...",
+  "thankYouMessage": "Thank you for reaching out!\nI'll get back to you soon.",
+  "errorMessage": "Oops! Something went wrong. Please try again later.",
+  "fillAllFieldsMessage": "Please fill out all fields before submitting.",
+  "languageNotAvailable": "Translations for {lang} not available.",
+  "alreadySelected": "{lang} is already selected.",
+  "switchedTo": "Language switched to {lang}."
 }

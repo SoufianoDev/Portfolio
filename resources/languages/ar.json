@@ -29,4 +29,15 @@
   "submitButton": "إرسال",
   "sendMessage": "إرسال رسالة",
   "scrollForMore": "قم بالتمرير للمزيد"
+,
+  "footerText": "© {year} Soufiano Dev. جميع الحقوق محفوظة.",
+  "messagePlaceholder": "مرحبًا، أود مناقشة...",
+  "inputPlaceholder": "جون سميث",
+  "sendingButton": "جارٍ الإرسال...",
+  "thankYouMessage": "شكرًا على تواصلك! سأرد عليك قريبًا.",
+  "errorMessage": "حدث خطأ ما.\n يرجى المحاولة مرة أخرى لاحقًا.",
+  "fillAllFieldsMessage": "يرجى ملء جميع الحقول قبل الإرسال.",
+  "languageNotAvailable": "الترجمات للغة {lang} غير متوفرة.",
+  "alreadySelected": "اللغة {lang} مُختارة بالفعل.",
+  "switchedTo": "تم تغيير اللغة إلى {lang}."
 }

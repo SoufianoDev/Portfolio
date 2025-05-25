@@ -27,6 +27,16 @@
   "yourEmail": "Tu Email",
   "yourMessage": "Tu Mensaje",
   "sendMessage": "Enviar Mensaje",
-   "submitButton": "Enviar",
-  "scrollForMore": "Desplázate para más"
+  "submitButton": "Enviar",
+  "scrollForMore": "Desplázate para más",
+  "footerText": "© {year} Soufiano Dev. Todos los derechos reservados.",
+  "messagePlaceholder": "Hola, me gustaría hablar de...",
+  "inputPlaceholder": "John Smith",
+  "sendingButton": "Enviando...",
+  "thankYouMessage": "¡Gracias por contactarme!\nMe pondré en contacto contigo pronto.",
+  "errorMessage": "¡Ups! Algo salió mal. Por favor, inténtalo \nde nuevo más tarde.",
+  "fillAllFieldsMessage": "Por favor, complete todos los campos antes de enviar.",
+  "languageNotAvailable": "Las traducciones para {lang} no están disponibles.",
+  "alreadySelected": "{lang} ya está seleccionado.",
+  "switchedTo": "Idioma cambiado a {lang}."
 }

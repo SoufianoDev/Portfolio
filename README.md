@@ -43,17 +43,20 @@ This portfolio website features:
 
 ## Supported Languages
 
-The portfolio supports **Five Languages**:
+The portfolio supports **Six Languages**:
 1. **English** (Default)
 2. **Français** (French)
 3. **Español** (Spanish)
-4. **العربية** (Arabic)
-5. **فارسى**   (Persian)
+4. **Русский** (Russian)
+5. **العربية** (Arabic)
+6. **فارسى**   (Persian)
 
 ### How It Works
 - The language selector is located in the top-left corner of the hero section.
 - Clicking the globe icon opens a dropdown menu with the available languages.
 - Selecting a language dynamically translates the content of the portfolio using JavaScript.
+- Toast notifications provide immediate feedback when switching languages, even when selecting the current language.
+- Background decorative images are unselectable to prevent accidental interactions.
 - The selected language is stored in the browser's local storage for persistence across sessions.
 
 ## Technologies Used
@@ -72,3 +75,4 @@ The portfolio supports **Five Languages**:
 - GSAP 3.12.2
 - Font Awesome 6.0.0-beta3
 - Google Fonts (Sansita)
+- Toast.js v2.0.0(CDN From My Github.For Notifications)

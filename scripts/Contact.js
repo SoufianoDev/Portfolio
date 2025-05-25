@@ -23,8 +23,7 @@ if (!form || !submitBtn) {
         translator.translations[currentLang].sendingButton;
       submitBtn.disabled = true;
 
-      emailjs
-        .send(serviceID, templateID, {
+      emailjs.send(serviceID, templateID, {
           from_name: name,
           email_id: email,
           message: message,
@@ -34,28 +33,23 @@ if (!form || !submitBtn) {
           (response) => {
             console.log("Email sent successfully:", response);
             Toast.makeText(
-              document.body,
-              translator.translations[currentLang].thankYouMessage,
-              Toast.LENGTH_SHORT
-            )
-              .setStyle("default2")
+             document.body,
+              translator.translations[currentLang].thankYouMessage,4000)
+              .setStyle(Toast.STYLE_TRANSPARENT)
               .setPosition(Toast.POSITION_TOP_CENTER)
-              .setIcon("./resources/assets/checkmark.webm", "EXTRA_LARGE")
+              .setAnimation(Toast.LIGHT_SPEED_IN_LEFT, Toast.LIGHT_SPEED_OUT_RIGHT)
+              .setIcon("./resources/assets/ic_mail_sent.webm", Toast.ICON_SIZE.EXTRA_LARGE)
               .addCallback(() => console.log("Toast shown!"))
               .show();
             form.reset();
           },
           (error) => {
             console.error("Email sending failed:", error);
-            Toast.makeText(
-              document.body,
-              translator.translations[currentLang].errorMessage,
-              Toast.LENGTH_LONG
-            )
-              .setStyle("error")
-              .setPosition(Toast.POSITION_TOP_CENTER)
-              // .setIcon("./resources/assets/error.png", "MEDIUM") // Using predefined MEDIUM size
-              .show();
+           const successMessage = Toast.makeText(document.body, translator.translations[currentLang].errorMessage, Toast.LENGTH_LONG)
+              successMessage.setStyle(Toast.STYLE_ERROR1)
+              successMessage.setPosition(Toast.POSITION_TOP_CENTER)
+              successMessage.setIcon("./resources/assets/ic_error2.webm", Toast.ICON_SIZE.SMALL)
+             successMessage.show();
           }
         )
         .finally(() => {
