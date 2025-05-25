@@ -1,4 +1,5 @@
 // Contact.js
+
 emailjs.init("u7sWoQ1sfpfBdV2B1");
 
 const serviceID = "service_7clceog";
@@ -10,68 +11,92 @@ const submitBtn = document.getElementById("submit-btn");
 if (!form || !submitBtn) {
   console.error("Form or submit button not found!");
 } else {
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    try {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const currentLang = document.documentElement.lang;
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-    const currentLang = document.documentElement.lang;
-
-    if (name && email && message) {
-      submitBtn.textContent =
-        translator.translations[currentLang].sendingButton;
-      submitBtn.disabled = true;
-
-      emailjs.send(serviceID, templateID, {
-          from_name: name,
-          email_id: email,
-          message: message,
-          to_name: "Soufiane",
-        })
-        .then(
-          (response) => {
-            console.log("Email sent successfully:", response);
-            Toast.makeText(
-             document.body,
-              translator.translations[currentLang].thankYouMessage,4000)
-              .setStyle(Toast.STYLE_TRANSPARENT)
-              .setPosition(Toast.POSITION_TOP_CENTER)
-              .setAnimation(Toast.LIGHT_SPEED_IN_LEFT, Toast.LIGHT_SPEED_OUT_RIGHT)
-              .setIcon("./resources/assets/ic_mail_sent.webm", Toast.ICON_SIZE.EXTRA_LARGE)
-              .addCallback(() => console.log("Toast shown!"))
-              .show();
-            form.reset();
-          },
-          (error) => {
-            console.error("Email sending failed:", error);
-           const successMessage = Toast.makeText(document.body, translator.translations[currentLang].errorMessage, Toast.LENGTH_LONG)
-              successMessage.setStyle(Toast.STYLE_ERROR1)
-              successMessage.setPosition(Toast.POSITION_TOP_CENTER)
-              successMessage.setIcon("./resources/assets/ic_error2.webm", Toast.ICON_SIZE.SMALL)
-             successMessage.show();
-          }
-        )
-        .finally(() => {
+      if (name && email && message) {
+        submitBtn.textContent =
+          translator.translations[currentLang].sendingButton;
+        submitBtn.disabled = true;
+        try {
+          const response = await emailjs.send(serviceID, templateID, {
+            from_name: name,
+            email_id: email,
+            message: message,
+            to_name: "Soufiane",
+          });
+          console.log("Email sent successfully:", response);
+          Toast.makeText(
+            document.body,
+            translator.translations[currentLang].thankYouMessage,
+            4000
+          )
+            .setStyle(Toast.STYLE_TRANSPARENT)
+            .setPosition(Toast.POSITION_TOP_CENTER)
+            .setAnimation(
+              Toast.LIGHT_SPEED_IN_LEFT,
+              Toast.LIGHT_SPEED_OUT_RIGHT
+            )
+            .setIcon(
+              "./resources/assets/ic_mail_sent.webm",
+              Toast.ICON_SIZE.EXTRA_LARGE
+            )
+            .addCallback(() => console.log("Toast shown!"))
+            .show();
+          form.reset();
+        } catch (error) {
+          console.error("Email sending failed:", error);
+          const errorMessage = Toast.makeText(
+            document.body,
+            translator.translations[currentLang].errorMessage,
+            Toast.LENGTH_LONG
+          );
+          errorMessage.setStyle(Toast.STYLE_ERROR1);
+          errorMessage.setPosition(Toast.POSITION_TOP_CENTER);
+          errorMessage.setIcon(
+            "./resources/assets/ic_error2.webm",
+            Toast.ICON_SIZE.SMALL
+          );
+          errorMessage.show();
+        } finally {
           submitBtn.textContent =
             translator.translations[currentLang].submitButton;
           submitBtn.disabled = false;
-        });
-    } else {
-      console.warn("Form validation failed: All fields are required.");
+        }
+      } else {
+        console.warn("Form validation failed: All fields are required.");
+        Toast.makeText(
+          document.body,
+          translator.translations[currentLang].fillAllFieldsMessage,
+          Toast.LENGTH_SHORT
+        )
+          .setStyle("warning")
+          .setPosition(Toast.POSITION_TOP_CENTER)
+          // .setIcon("./resources/assets/warning.png", "MEDIUM") // Using predefined MEDIUM size
+          .show();
+      }
+    } catch (err) {
+      // Catch any unexpected error in the handler
+      console.error("Unexpected error in contact form submission:", err);
       Toast.makeText(
         document.body,
-        translator.translations[currentLang].fillAllFieldsMessage,
-        Toast.LENGTH_SHORT
+        "Unexpected error occurred. Please try again.",
+        Toast.LENGTH_LONG
       )
-        .setStyle("warning")
+        .setStyle(Toast.STYLE_ERROR1)
         .setPosition(Toast.POSITION_TOP_CENTER)
-        // .setIcon("./resources/assets/warning.png", "MEDIUM") // Using predefined MEDIUM size
         .show();
+      submitBtn.textContent =
+        translator.translations[document.documentElement.lang].submitButton;
+      submitBtn.disabled = false;
     }
   });
 }
-
 
 // emailjs.init("u7sWoQ1sfpfBdV2B1");
 // const serviceID = "service_7clceog";
